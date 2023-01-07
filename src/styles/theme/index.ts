@@ -1,0 +1,26 @@
+import { extendBaseTheme, type ThemeConfig } from '@chakra-ui/react';
+import chakraTheme from '@chakra-ui/theme';
+import { colors, fonts } from './foundations';
+import styles from './styles';
+
+const config: ThemeConfig = {
+  initialColorMode: 'system',
+  useSystemColorMode: false,
+};
+
+const { Button, Container, Heading, Divider } = chakraTheme.components;
+
+const theme = extendBaseTheme({
+  config,
+  fonts,
+  styles,
+  colors,
+  components: {
+    Button,
+    Heading,
+    Container,
+    Divider,
+  },
+});
+
+export default theme;
