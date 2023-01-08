@@ -7,8 +7,8 @@ import {
   Stack,
   Text,
 } from '@chakra-ui/react';
-import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
 
+import { FaInstagram } from 'react-icons/fa';
 import { Logo } from '../atoms';
 import { ReactNode } from 'react';
 
@@ -33,21 +33,9 @@ export function Footer({ containerProps, ...rest }: FooterProps) {
             <ButtonGroup variant="ghost">
               <IconButton
                 as="a"
-                href="#"
-                aria-label="LinkedIn"
-                icon={<FaLinkedin fontSize="1.25rem" />}
-              />
-              <IconButton
-                as="a"
-                href="#"
-                aria-label="GitHub"
-                icon={<FaGithub fontSize="1.25rem" />}
-              />
-              <IconButton
-                as="a"
-                href="#"
-                aria-label="Twitter"
-                icon={<FaTwitter fontSize="1.25rem" />}
+                href="https://instagram.com/medinfo.brasil"
+                aria-label="Instagram"
+                icon={<FaInstagram fontSize="1.25rem" />}
               />
             </ButtonGroup>
           </Stack>

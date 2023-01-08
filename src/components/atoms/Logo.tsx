@@ -4,6 +4,7 @@ import { ReactNode } from 'react';
 
 interface LogoProps extends BoxProps {
   children?: ReactNode;
+  href?: string;
 }
 
 export function Logo({ ...rest }: LogoProps) {
