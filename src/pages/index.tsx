@@ -96,7 +96,7 @@ export default function Home({ posts }: { posts: Post[] }) {
   const [q, setQ] = useState('');
   const [showAll, setShowAll] = useState(false);
 
-  const pageSize = 1;
+  const pageSize = 9;
   const pageNumber = router.query.page ? Number(router.query.page) : 1;
 
   const {
@@ -105,8 +105,6 @@ export default function Home({ posts }: { posts: Post[] }) {
     hasPrev,
     object: paginatedPosts,
   } = paginate(posts, pageSize, pageNumber);
-
-  const isLastPage = !hasNext && hasPrev;
 
   const handleNext = () => {
     router.replace({
