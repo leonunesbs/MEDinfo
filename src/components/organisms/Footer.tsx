@@ -1,16 +1,8 @@
-import {
-  Box,
-  ButtonGroup,
-  Container,
-  ContainerProps,
-  IconButton,
-  Stack,
-  Text,
-} from '@chakra-ui/react';
+import { Box, Container, ContainerProps, Stack, Text } from '@chakra-ui/react';
 
-import { FaInstagram } from 'react-icons/fa';
 import { Logo } from '../atoms';
 import { ReactNode } from 'react';
+import { SocialButtons } from '../molecules';
 
 interface FooterProps {
   children?: ReactNode;
@@ -30,14 +22,7 @@ export function Footer({ containerProps, ...rest }: FooterProps) {
         <Stack spacing={{ base: '4', md: '5' }}>
           <Stack justify="space-between" direction="row" align="center">
             <Logo fontSize={'xl'} />
-            <ButtonGroup variant="ghost">
-              <IconButton
-                as="a"
-                href="https://instagram.com/medinfo.brasil"
-                aria-label="Instagram"
-                icon={<FaInstagram fontSize="1.25rem" />}
-              />
-            </ButtonGroup>
+            <SocialButtons />
           </Stack>
           <Text fontSize="sm" color="subtle">
             &copy; {new Date().getFullYear()} MEDinfo Brasil. All rights
