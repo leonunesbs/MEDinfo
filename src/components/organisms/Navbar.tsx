@@ -4,7 +4,6 @@ import {
   Container,
   ContainerProps,
   HStack,
-  useBreakpointValue,
 } from '@chakra-ui/react';
 
 import { Logo } from '../atoms';
@@ -18,7 +17,6 @@ interface NavbarProps {
 }
 
 export function Navbar({ containerProps, ...rest }: NavbarProps) {
-  const isDesktop = useBreakpointValue({ base: false, lg: true });
   return (
     <Box
       as="nav"
