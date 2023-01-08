@@ -78,7 +78,9 @@ function Add() {
           </HStack>
           <Input type="file" pt={1} {...register('image')} />
           <Box>
-            <Button type="submit">Salvar</Button>
+            <Button type="submit" isLoading={addPost.isLoading}>
+              Salvar
+            </Button>
           </Box>
         </Stack>
       </form>

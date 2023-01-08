@@ -69,7 +69,9 @@ function Edit({ post }: { post: Post }) {
             <Input type="text" placeholder="Link" {...register('sourceUrl')} />
           </HStack>
           <Box>
-            <Button type="submit">Atualizar</Button>
+            <Button type="submit" isLoading={updatePost.isLoading}>
+              Atualizar
+            </Button>
           </Box>
         </Stack>
       </form>
