@@ -1,19 +1,16 @@
 import {
   Box,
   Button,
-  ButtonGroup,
   Container,
   ContainerProps,
-  Flex,
   HStack,
-  IconButton,
   useBreakpointValue,
 } from '@chakra-ui/react';
 
-import { FiMenu } from 'react-icons/fi';
 import { Logo } from '../atoms';
 import NextLink from 'next/link';
 import { ReactNode } from 'react';
+import { SideMenu } from './SideMenu';
 
 interface NavbarProps {
   children?: ReactNode;
@@ -45,24 +42,7 @@ export function Navbar({ containerProps, ...rest }: NavbarProps) {
           >
             <Logo />
           </Button>
-          {isDesktop ? (
-            <Flex justify="space-between" flex="1">
-              <ButtonGroup variant="link" spacing="8">
-                {[''].map((item) => (
-                  <Button key={item}>{item}</Button>
-                ))}
-              </ButtonGroup>
-              <HStack spacing="3">
-                <Button variant="ghost">Entrar</Button>
-              </HStack>
-            </Flex>
-          ) : (
-            <IconButton
-              variant="ghost"
-              icon={<FiMenu fontSize="1.25rem" />}
-              aria-label="Open Menu"
-            />
-          )}
+          <SideMenu />
         </HStack>
       </Container>
     </Box>

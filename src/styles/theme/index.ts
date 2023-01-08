@@ -8,7 +8,7 @@ const config: ThemeConfig = {
   useSystemColorMode: false,
 };
 
-const { Button, Container, Heading, Divider, Input, Textarea } =
+const { Button, Container, Heading, Divider, Input, Textarea, Card, Drawer } =
   chakraTheme.components;
 
 const theme = extendBaseTheme({
@@ -17,6 +17,8 @@ const theme = extendBaseTheme({
   styles,
   colors,
   components: {
+    Drawer,
+    Card,
     Input,
     Textarea,
     Button,

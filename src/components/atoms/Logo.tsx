@@ -1,4 +1,4 @@
-import { Box, BoxProps, Text } from '@chakra-ui/react';
+import { Box, BoxProps, Text, useColorModeValue } from '@chakra-ui/react';
 
 import { ReactNode } from 'react';
 
@@ -11,10 +11,14 @@ export function Logo({ ...rest }: LogoProps) {
   return (
     <Box fontSize={['xl', '2xl']} {...rest}>
       <Text>
-        <Text as="span" fontWeight={900} color="blue.800">
+        <Text
+          as="span"
+          fontWeight={900}
+          color={useColorModeValue('blue.800', 'white')}
+        >
           MED
         </Text>
-        <Text as="span" color="blue.500">
+        <Text as="span" color={useColorModeValue('blue.500', 'blue.400')}>
           info
         </Text>{' '}
         <Text as="span">&#x1F1E7;&#x1F1F7;</Text>

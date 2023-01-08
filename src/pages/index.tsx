@@ -1,13 +1,19 @@
 import {
   AspectRatio,
-  Box,
   Button,
+  Card,
+  CardBody,
+  CardFooter,
   HStack,
+  Heading,
+  IconButton,
   Input,
   SimpleGrid,
   Stack,
   Text,
+  useColorModeValue,
 } from '@chakra-ui/react';
+import { FaArrowRight, FaSearch } from 'react-icons/fa';
 
 import { GetStaticProps } from 'next';
 import { Layout } from '@/components/templates';
@@ -18,12 +24,11 @@ import { prisma } from '@/server/prisma';
 
 const PostCard = ({ post }: { post: Post }) => {
   return (
-    <Box
+    <Card
       w="full"
-      shadow="md"
-      rounded="lg"
       overflow="hidden"
       _hover={{ shadow: 'lg' }}
+      variant="elevated"
     >
       <AspectRatio ratio={1}>
         <NextImage
@@ -38,23 +43,26 @@ const PostCard = ({ post }: { post: Post }) => {
           }}
         />
       </AspectRatio>
-      <Box p={4}>
-        <Text
-          fontSize="xl"
-          fontWeight="bold"
-          color="gray.900"
-          noOfLines={3}
+      <CardBody>
+        <Heading
+          as="h2"
+          size="md"
+          color={useColorModeValue('gray.800', 'white')}
           mb={2}
         >
           {post.title}
-        </Text>
-        <Text fontSize="sm" color="gray.500" noOfLines={3}>
+        </Heading>
+        <Text
+          fontSize="sm"
+          color={useColorModeValue('gray.500', 'gray.400')}
+          textAlign="justify"
+        >
           {post.description}
         </Text>
-      </Box>
-      <Box p={4}>
-        <HStack justify="space-between">
-          <Text fontSize="sm" color="gray.500">
+      </CardBody>
+      <CardFooter>
+        <HStack justify="space-between" w="full">
+          <Text fontSize="sm" color={useColorModeValue('gray.500', 'gray.400')}>
             {new Date(post.createdAt).toLocaleString('pt-BR', {
               dateStyle: 'short',
               timeStyle: 'short',
@@ -65,12 +73,13 @@ const PostCard = ({ post }: { post: Post }) => {
             href={`/posts/${post.slug}`}
             size="sm"
             variant="outline"
+            rightIcon={<FaArrowRight />}
           >
             Ler mais
           </Button>
         </HStack>
-      </Box>
-    </Box>
+      </CardFooter>
+    </Card>
   );
 };
 
@@ -90,7 +99,7 @@ export default function Home({ posts }: { posts: Post[] }) {
         </HStack>
         <HStack maxW="md">
           <Input placeholder="Buscar uma postagem" />
-          <Button>Buscar</Button>
+          <IconButton aria-label="Buscar" icon={<FaSearch />} />
         </HStack>
         <SimpleGrid gap={4} columns={[1, 2, 3]}>
           {posts.map((post) => (

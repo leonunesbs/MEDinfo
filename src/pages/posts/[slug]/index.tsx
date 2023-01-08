@@ -113,7 +113,7 @@ function Post({ post }: { post: Post }) {
         <HStack>
           <Box>
             <Button as={NextLink} href="/" variant={'outline'}>
-              Voltar
+              Início
             </Button>
           </Box>
           <Box>
