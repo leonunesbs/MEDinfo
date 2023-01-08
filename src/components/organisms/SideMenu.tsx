@@ -15,6 +15,7 @@ import { FiMenu } from 'react-icons/fi';
 import { Logo } from '../atoms';
 import { ReactNode } from 'react';
 import { SocialButtons } from '../molecules';
+import { useSession } from 'next-auth/react';
 
 interface SideMenuProps {
   children?: ReactNode;
@@ -22,6 +23,7 @@ interface SideMenuProps {
 
 export function SideMenu({}: SideMenuProps) {
   const sideMenu = useDisclosure();
+  const { status } = useSession();
 
   return (
     <>
@@ -37,6 +39,7 @@ export function SideMenu({}: SideMenuProps) {
           <DrawerCloseButton />
           <DrawerHeader>
             <Logo />
+            {status}
           </DrawerHeader>
 
           <DrawerBody>

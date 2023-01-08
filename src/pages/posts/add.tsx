@@ -14,6 +14,7 @@ import { Post } from '@prisma/client';
 import axios from 'axios';
 import { trpc } from '@/utils/trpc';
 import { useRouter } from 'next/router';
+import { useSession } from 'next-auth/react';
 
 type Inputs = Omit<Post, 'image'> & {
   image: FileList;
@@ -23,6 +24,7 @@ function Add() {
   const { handleSubmit, register } = useForm<Inputs>();
   const router = useRouter();
   const addPost = trpc.posts.create.useMutation();
+  const { data: session } = useSession();
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     const image = {
@@ -33,7 +35,7 @@ function Add() {
     await addPost
       .mutateAsync({
         ...data,
-        authorId: 'clcmn0b1k00004683ugpj4z3m',
+        authorEmail: session?.user?.email as string,
         image,
       })
       .then(async (post) => {

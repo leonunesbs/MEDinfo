@@ -21,7 +21,7 @@ export const posts = router({
   create: procedure
     .input(
       z.object({
-        authorId: z.string(),
+        authorEmail: z.string(),
         title: z.string(),
         description: z.string(),
         keywords: z.string(),
@@ -64,6 +64,11 @@ export const posts = router({
       const post = await prisma.post.create({
         data: {
           ...input,
+          author: {
+            connect: {
+              email: input.authorEmail,
+            },
+          },
           image: url.split('?')[0],
           slug: await validatedSlug(slug),
         },
