@@ -19,9 +19,10 @@ import { GetStaticProps } from 'next';
 import { Layout } from '@/components/templates';
 import NextImage from 'next/image';
 import NextLink from 'next/link';
+import { Post } from '@prisma/client';
 import { prisma } from '@/server/prisma';
 
-const PostCard = ({ post }: { post: any }) => {
+const PostCard = ({ post }: { post: Post }) => {
   return (
     <Card
       w="full"
@@ -82,7 +83,7 @@ const PostCard = ({ post }: { post: any }) => {
   );
 };
 
-export default function Home({ posts }: { posts: any[] }) {
+export default function Home({ posts }: { posts: Post[] }) {
   return (
     <Layout
       title="MEDinfo"
