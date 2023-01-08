@@ -68,7 +68,7 @@ function Post({ post }: { post: Post }) {
                 <Button
                   variant={'outline'}
                   as={NextLink}
-                  href={`/${post.slug}/edit`}
+                  href={`/posts/${post.slug}/edit`}
                   rightIcon={<MdModeEditOutline />}
                 >
                   Editar

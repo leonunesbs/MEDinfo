@@ -35,7 +35,7 @@ export const posts = router({
         sourceUrl: z.string(),
       }),
     )
-    .mutation(async ({ input }) => {
+    .mutation(async ({ input: { authorEmail, ...input } }) => {
       const fileParams = {
         Bucket: process.env.S3_BUCKET,
         Key: `${generateImageName(input.image.name)}`,
@@ -66,7 +66,7 @@ export const posts = router({
           ...input,
           author: {
             connect: {
-              email: input.authorEmail,
+              email: authorEmail,
             },
           },
           image: url.split('?')[0],

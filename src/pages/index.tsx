@@ -32,6 +32,7 @@ const PostCard = ({ post }: { post: Post }) => {
     >
       <AspectRatio ratio={1}>
         <NextImage
+          priority
           sizes="50vw"
           draggable={false}
           src={post.image}
