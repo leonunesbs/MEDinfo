@@ -1,31 +1,37 @@
+import * as gtag from '@/libs/gtag';
+
+import { Analytics, Fonts } from '@/components/atoms';
+
 import type { AppProps } from 'next/app';
 import { ChakraBaseProvider } from '@chakra-ui/react';
-import { Fonts } from '@/components/atoms';
-import Script from 'next/script';
 import { SessionProvider } from 'next-auth/react';
 import theme from '@/styles/theme';
 import { trpc } from '@/utils/trpc';
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
+  const router = useRouter();
+
+  useEffect(() => {
+    const handleRouteChange = (url: string) => {
+      gtag.pageview(url);
+    };
+    if (process.env.NODE_ENV === 'production') {
+      router.events.on('routeChangeComplete', handleRouteChange);
+      return () => {
+        router.events.off('routeChangeComplete', handleRouteChange);
+      };
+    }
+  }, [router.events]);
+
   return (
     <SessionProvider session={session}>
       <ChakraBaseProvider theme={theme}>
         <Component {...pageProps} />
         <Fonts />
       </ChakraBaseProvider>
-      <Script
-        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GA_MEASUREMENT_ID}`}
-        strategy="afterInteractive"
-      />
-      <Script id="google-analytics" strategy="afterInteractive">
-        {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){window.dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', ${process.env.GA_MEASUREMENT_ID});
-          `}
-      </Script>
+      <Analytics />
     </SessionProvider>
   );
 }
