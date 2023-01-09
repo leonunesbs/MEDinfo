@@ -153,7 +153,7 @@ export default function Home({ posts }: { posts: Post[] }) {
 
   return (
     <Layout
-      title="Informação com referência MEDinfo Brasil"
+      title="Informação com referência"
       description="Informação com referência, MEDinfo Brasil. Atualização em medicina e saúde."
       image="/medinfo.png"
       keywords="atualização, informação, medicina, saúde, referência,"
