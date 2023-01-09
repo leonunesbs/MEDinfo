@@ -153,16 +153,16 @@ export default function Home({ posts }: { posts: Post[] }) {
 
   return (
     <Layout
-      title="MEDinfo"
-      description="Informação com referência"
-      image="/images/medinfo.png"
+      title="Informação com referência MEDinfo Brasil"
+      description="Informação com referência, MEDinfo Brasil. Atualização em medicina e saúde."
+      image="/medinfo.png"
       keywords="atualização, informação, medicina, saúde, referência,"
     >
       <Stack spacing={4}>
         <HStack w="full" justify="space-between">
-          <Text fontSize="2xl" fontWeight="bold">
+          <Heading as="h1" size="lg">
             Posts
-          </Text>
+          </Heading>
         </HStack>
         <HStack maxW="md">
           <Input

@@ -1,4 +1,10 @@
 import {
+  AlertDialog,
+  AlertDialogBody,
+  AlertDialogContent,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogOverlay,
   AspectRatio,
   Box,
   Button,
@@ -9,17 +15,22 @@ import {
   Stack,
   Text,
   TextProps,
+  useDisclosure,
 } from '@chakra-ui/react';
 import { GetStaticPaths, GetStaticProps } from 'next';
 
 import { Layout } from '@/components/templates';
 import { prisma } from '@/server/prisma';
+import { trpc } from '@/utils/trpc';
 import { Post } from '@prisma/client';
 import ChakraUIRenderer from 'chakra-ui-markdown-renderer';
+import { useSession } from 'next-auth/react';
 import NextImage from 'next/image';
 import NextLink from 'next/link';
+import { useRouter } from 'next/router';
+import { useRef } from 'react';
 import { HiOutlineExternalLink } from 'react-icons/hi';
-import { MdModeEditOutline } from 'react-icons/md';
+import { MdDelete, MdModeEditOutline } from 'react-icons/md';
 import ReactMarkdown from 'react-markdown';
 
 const newTheme = {
@@ -42,6 +53,20 @@ const newTheme = {
 };
 
 function Post({ post }: { post: Post }) {
+  const { data } = useSession();
+  const router = useRouter();
+
+  const cancelRef = useRef<HTMLButtonElement>(null);
+  const deleteAlert = useDisclosure();
+  const deletePost = trpc.posts.delete.useMutation({
+    onSuccess: () => {
+      router.push('/');
+    },
+  });
+  const handleDelete = async () => {
+    await deletePost.mutateAsync({ id: post.id });
+  };
+
   return (
     <Layout {...post}>
       <Stack direction={['column', 'row']} spacing={6}>
@@ -59,22 +84,63 @@ function Post({ post }: { post: Post }) {
                 <Button
                   as={NextLink}
                   href={post.sourceUrl}
+                  colorScheme="blue"
                   rightIcon={<HiOutlineExternalLink />}
                 >
                   Acessar referência
                 </Button>
               </Box>
-              <Box>
-                <Button
-                  variant={'outline'}
-                  as={NextLink}
-                  href={`/posts/${post.slug}/edit`}
-                  rightIcon={<MdModeEditOutline />}
-                >
-                  Editar
-                </Button>
-              </Box>
             </HStack>
+            {data?.user.isStaff && (
+              <HStack>
+                <Box>
+                  <Button
+                    as={NextLink}
+                    href={`/posts/${post.slug}/edit`}
+                    rightIcon={<MdModeEditOutline />}
+                  >
+                    Editar
+                  </Button>
+                </Box>
+                <Box>
+                  <Button
+                    colorScheme="red"
+                    rightIcon={<MdDelete />}
+                    onClick={deleteAlert.onOpen}
+                    isLoading={deletePost.isLoading}
+                  >
+                    Excluir
+                  </Button>
+                  <AlertDialog leastDestructiveRef={cancelRef} {...deleteAlert}>
+                    <AlertDialogOverlay>
+                      <AlertDialogContent>
+                        <AlertDialogHeader fontSize="lg" fontWeight="bold">
+                          Excluir post
+                        </AlertDialogHeader>
+
+                        <AlertDialogBody>
+                          Tem certeza que deseja excluir este post?
+                        </AlertDialogBody>
+
+                        <AlertDialogFooter>
+                          <Button ref={cancelRef} onClick={deleteAlert.onClose}>
+                            Cancelar
+                          </Button>
+                          <Button
+                            colorScheme="red"
+                            onClick={handleDelete}
+                            isLoading={deletePost.isLoading}
+                            ml={3}
+                          >
+                            Excluir
+                          </Button>
+                        </AlertDialogFooter>
+                      </AlertDialogContent>
+                    </AlertDialogOverlay>
+                  </AlertDialog>
+                </Box>
+              </HStack>
+            )}
           </Stack>
         </Stack>
         <Divider display={['flex', 'none']} />
@@ -120,6 +186,7 @@ function Post({ post }: { post: Post }) {
             <Button
               as={NextLink}
               href={post.sourceUrl}
+              colorScheme="blue"
               rightIcon={<HiOutlineExternalLink />}
             >
               Acessar referência

@@ -1,4 +1,4 @@
-import { procedure, router } from '../trpc';
+import { router, staffProcedure } from '../trpc';
 
 import S3 from 'aws-sdk/clients/s3';
 import { prisma } from '../prisma';
@@ -18,7 +18,7 @@ function generateImageName(fileName: string): string {
 }
 
 export const posts = router({
-  create: procedure
+  create: staffProcedure
     .input(
       z.object({
         authorEmail: z.string(),
@@ -79,7 +79,7 @@ export const posts = router({
         uploadUrl: url,
       };
     }),
-  update: procedure
+  update: staffProcedure
     .input(
       z.object({
         id: z.string(),
@@ -98,6 +98,19 @@ export const posts = router({
         },
         data: {
           ...input,
+        },
+      });
+    }),
+  delete: staffProcedure
+    .input(
+      z.object({
+        id: z.string(),
+      }),
+    )
+    .mutation(async ({ input }) => {
+      return await prisma.post.delete({
+        where: {
+          id: input.id,
         },
       });
     }),

@@ -1,4 +1,5 @@
 import {
+  Button,
   Drawer,
   DrawerBody,
   DrawerCloseButton,
@@ -7,15 +8,16 @@ import {
   DrawerHeader,
   DrawerOverlay,
   IconButton,
-  Input,
+  Stack,
   useDisclosure,
 } from '@chakra-ui/react';
+import { signIn, signOut, useSession } from 'next-auth/react';
 
 import { FiMenu } from 'react-icons/fi';
 import { Logo } from '../atoms';
+import NextLink from 'next/link';
 import { ReactNode } from 'react';
 import { SocialButtons } from '../molecules';
-import { useSession } from 'next-auth/react';
 
 interface SideMenuProps {
   children?: ReactNode;
@@ -23,8 +25,8 @@ interface SideMenuProps {
 
 export function SideMenu({}: SideMenuProps) {
   const sideMenu = useDisclosure();
-  const { status } = useSession();
-
+  const { data, status } = useSession();
+  const isAuth = status === 'authenticated';
   return (
     <>
       <IconButton
@@ -39,11 +41,21 @@ export function SideMenu({}: SideMenuProps) {
           <DrawerCloseButton />
           <DrawerHeader>
             <Logo />
-            {status}
           </DrawerHeader>
 
           <DrawerBody>
-            <Input placeholder="Search" />
+            <Stack>
+              {data?.user.isStaff && (
+                <Button as={NextLink} href="/posts/add">
+                  Novo Post
+                </Button>
+              )}
+              {isAuth ? (
+                <Button onClick={() => signOut()}>Sair</Button>
+              ) : (
+                <Button onClick={() => signIn()}>Entrar</Button>
+              )}
+            </Stack>
           </DrawerBody>
 
           <DrawerFooter>
