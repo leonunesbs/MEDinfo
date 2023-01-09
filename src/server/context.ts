@@ -5,6 +5,7 @@ import { inferAsyncReturnType } from '@trpc/server';
 
 export async function createContext({
   req,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   res,
 }: trpcNext.CreateNextContextOptions) {
   // Create your context based on the request object
