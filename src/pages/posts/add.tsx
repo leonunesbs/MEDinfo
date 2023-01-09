@@ -73,7 +73,11 @@ function Add() {
             placeholder="Palavras-chave"
             {...register('keywords')}
           />
-          <Textarea placeholder="Conteúdo" {...register('content')} />
+          <Textarea
+            minH={'md'}
+            placeholder="Conteúdo"
+            {...register('content')}
+          />
           <HStack>
             <Input type="text" placeholder="Fonte" {...register('source')} />
             <Input type="text" placeholder="Link" {...register('sourceUrl')} />
