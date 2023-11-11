@@ -38,7 +38,7 @@
     "@trpc/react-query": "10.8.1",
     "@trpc/server": "10.8.1",
     "aws-sdk": "2.1290.0",
-    "axios": "1.2.2",
+    "axios": "1.6.0",
     "chakra-ui-markdown-renderer": "4.1.0",
     "framer-motion": "8.2.4",
     "next": "13.1.0",
