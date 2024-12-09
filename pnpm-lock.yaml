@@ -14,7 +14,7 @@ specifiers:
   '@trpc/next': 10.8.1
   '@trpc/react-query': 10.8.1
   '@trpc/server': 10.8.1
-  '@types/gtag.js': 0.0.12
+  '@types/gtag.js': 0.0.20
   '@types/node': 18.11.17
   '@types/react': 18.0.26
   '@types/react-dom': 18.0.10
@@ -74,7 +74,7 @@ dependencies:
 devDependencies:
   '@commitlint/cli': 17.3.0
   '@commitlint/config-conventional': 17.3.0
-  '@types/gtag.js': 0.0.12
+  '@types/gtag.js': 0.0.20
   '@types/node': 18.11.17
   '@types/react': 18.0.26
   '@types/react-dom': 18.0.10
@@ -1959,8 +1959,8 @@ packages:
       '@types/ms': 0.7.31
     dev: false
 
-  /@types/gtag.js/0.0.12:
-    resolution: {integrity: sha512-YQV9bUsemkzG81Ea295/nF/5GijnD2Af7QhEofh7xu+kvCN6RdodgNwwGWXB5GMI3NoyvQo0odNctoH/qLMIpg==}
+  /@types/gtag.js/0.0.20:
+    resolution: {integrity: sha512-wwAbk3SA2QeU67unN7zPxjEHmPmlXwZXZvQEpbEUQuMCRGgKyE1m6XDuTUA9b6pCGb/GqJmdfMOY5LuDjJSbbg==}
     dev: true
 
   /@types/hast/2.3.4:
