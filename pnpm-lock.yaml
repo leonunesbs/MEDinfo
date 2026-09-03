@@ -40,7 +40,7 @@ specifiers:
   react-dom: 18.2.0
   react-hook-form: 7.41.5
   react-icons: 4.7.1
-  react-markdown: 8.0.4
+  react-markdown: 8.0.7
   sharp: 0.31.3
   typescript: 4.9.4
   zod: 3.20.2
@@ -59,7 +59,7 @@ dependencies:
   '@trpc/server': 10.8.1
   aws-sdk: 2.1290.0
   axios: 1.2.2
-  chakra-ui-markdown-renderer: 4.1.0_eqff5sd4z5gzjgp5wv2szcrudm
+  chakra-ui-markdown-renderer: 4.1.0_fzld356vpbcpmr6ez4cqij7dnu
   framer-motion: 8.2.4_biqbaboplfbrettd7655fr4n2y
   next: 13.1.0_biqbaboplfbrettd7655fr4n2y
   next-auth: 4.18.8_s75y6mxmikaw2mhqmuko6w7njm
@@ -67,7 +67,7 @@ dependencies:
   react-dom: 18.2.0_react@18.2.0
   react-hook-form: 7.41.5_react@18.2.0
   react-icons: 4.7.1_react@18.2.0
-  react-markdown: 8.0.4_kzbn2opkn2327fwg5yzwzya5o4
+  react-markdown: 8.0.7_kzbn2opkn2327fwg5yzwzya5o4
   sharp: 0.31.3
   zod: 3.20.2
 
@@ -2483,7 +2483,7 @@ packages:
     resolution: {integrity: sha512-V0mnJ5dwarmhYv8/MzhJ//aW68UpvnQBXv8lJ2QUsvn2pHcmAuNtu8hQEDz37XnA1iE+lRR9CIfGWWpgJ5QedQ==}
     dev: false
 
-  /chakra-ui-markdown-renderer/4.1.0_eqff5sd4z5gzjgp5wv2szcrudm:
+  /chakra-ui-markdown-renderer/4.1.0_fzld356vpbcpmr6ez4cqij7dnu:
     resolution: {integrity: sha512-kcRy5d2aSAEgLVvAQ3p/pMdOLY1sR6d/hOU2pl6zNXHuTzrUhjhGxEBDskyU0ffpIilsR/f1/NIAxMCXhSoREQ==}
     peerDependencies:
       '@chakra-ui/react': ^1.6.1 || ^2
@@ -2491,7 +2491,7 @@ packages:
     dependencies:
       '@chakra-ui/react': 2.4.6_7rmqxmvcooh6vn4y4z6d5tku5u
       deepmerge: 4.2.2
-      react-markdown: 8.0.4_kzbn2opkn2327fwg5yzwzya5o4
+      react-markdown: 8.0.7_kzbn2opkn2327fwg5yzwzya5o4
     dev: false
 
   /chalk/2.4.2:
@@ -5133,8 +5133,8 @@ packages:
     resolution: {integrity: sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==}
     dev: false
 
-  /react-markdown/8.0.4_kzbn2opkn2327fwg5yzwzya5o4:
-    resolution: {integrity: sha512-2oxHa6oDxc1apg/Gnc1Goh06t3B617xeywqI/92wmDV9FELI6ayRkwge7w7DoEqM0gRpZGTNU6xQG+YpJISnVg==}
+  /react-markdown/8.0.7_kzbn2opkn2327fwg5yzwzya5o4:
+    resolution: {integrity: sha512-bvWbzG4MtOU62XqBx3Xx+zB2raaFFsq4mYiAzfjXJMEz2sixgeAfraA3tvzULF02ZdOMUOKTBFFaZJDDrq+BJQ==}
     peerDependencies:
       '@types/react': '>=16'
       react: '>=16'
@@ -5152,7 +5152,7 @@ packages:
       remark-parse: 10.0.1
       remark-rehype: 10.1.0
       space-separated-tokens: 2.0.2
-      style-to-object: 0.3.0
+      style-to-object: 0.4.4
       unified: 10.1.2
       unist-util-visit: 4.1.1
       vfile: 5.3.6
@@ -5660,8 +5660,8 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /style-to-object/0.3.0:
-    resolution: {integrity: sha512-CzFnRRXhzWIdItT3OmF8SQfWyahHhjq3HwcMNCNLn+N7klOOqPjMeG/4JSu77D7ypZdGvSzvkrbyeTMizz2VrA==}
+  /style-to-object/0.4.4:
+    resolution: {integrity: sha512-HYNoHZa2GorYNyqiCaBgsxvcJIn7OHq6inEga+E6Ke3m5JkoqpQbnFssk4jwe+K7AhGa2fcha4wSOf1Kn01dMg==}
     dependencies:
       inline-style-parser: 0.1.1
     dev: false
